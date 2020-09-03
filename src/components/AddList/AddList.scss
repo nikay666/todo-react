@@ -1,0 +1,55 @@
+@import '../../var.scss';
+.add-list{
+    .list{
+        margin-bottom: 10px;
+    }
+    &__popup{
+        position: relative;
+        padding: 18px;
+        width: 240px;
+        height: 150px;
+        background-color: $white;
+    
+        box-shadow: $sidebar_item_shadow;
+        border-radius: $br_b;
+
+        &-colors{
+            margin-top: 12px;
+
+            ul{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .badge{
+                width: 18px;
+                height: 18px;
+                border: 1px solid transparent;
+                cursor: pointer;
+                transition: $transition;
+
+                &.active{
+                    transform: scale(1.3);
+                }
+            }
+        }
+        .btn{
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        .close-btn{
+            border: none;
+            background-color: transparent;
+            position: absolute;
+            top:-8px;
+            right: -8px;
+            cursor: pointer;
+
+            &__img{
+
+            }
+        }
+    }
+}

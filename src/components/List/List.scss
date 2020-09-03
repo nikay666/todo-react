@@ -2,12 +2,29 @@
 
 .list{
     margin-bottom: 30px;
+
+    &__add-button{
+        color: $dark;
+        svg{
+            path{
+                stroke: $dark;
+            }
+        }
+        opacity: .4;
+        transition: transition;
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+
     li{
     display: flex;
     align-items: center;
     padding: 10px 12px;
     margin-bottom: 5px;
     cursor: pointer;
+    transition: $transition;
 
     &.active{
       background-color: $white;
@@ -24,24 +41,6 @@
           fill: $icon_gray;
         }
       }
-    }
-  }
-  
-  .badge{
-    position: relative;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-
-    &--green{
-        background-color: #42B883;
-    }
-    &--blue{
-        background-color: #64C4ED;
-    }
-    &--pink{
-        background-color: #FFBBCC;
     }
   }
 }

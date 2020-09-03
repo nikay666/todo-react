@@ -9,12 +9,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  color: $dark;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 
 .todo{
   position: absolute;
@@ -36,4 +38,35 @@ code {
     border-right: 1px solid $border_color;
   }
 
+}
+
+
+.field{
+  background-color: $white;
+  border: 1px  solid $border_color;
+  border-radius: $br;
+  padding: 8px 12px; 
+  transition: $transition;
+  width: 100%;
+  &:focus{
+    border-color: $icon_gray;
+  }
+
+}
+
+.btn{
+  border-radius: $br;
+  border: none;
+  padding: 10px 20px;
+  transition: $transition;
+  cursor: pointer;
+}
+
+.btn-primary{
+  background-color: $primary;
+  color: $white;
+
+  &:hover{
+    background-color: $primary-hover;
+  }
 }

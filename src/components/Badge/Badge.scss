@@ -1,0 +1,24 @@
+@import '../../var.scss';
+.badge{
+    position: relative;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    @each $color, $colorHex in (
+        green: #42B883, 
+        blue: #64C4ED, 
+        pink:#FFBBCC, 
+        grey: #C9D1D3, 
+        lime:#B6E6BD,
+        purple: #C355F5,
+        black: #110133,
+        red: #FF6464
+        ) {
+        &--#{$color} {
+            background-color: $colorHex;
+        }
+      }
+  }
