@@ -20,6 +20,7 @@ code {
 
 .todo{
   position: absolute;
+  display: flex;
   top:0;
   left: 0;
 
@@ -36,6 +37,9 @@ code {
     padding: 60px 20px;
     background-color: $lightgray;
     border-right: 1px solid $border_color;
+  }
+  &__tasks{
+    flex:1;
   }
 
 }

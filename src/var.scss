@@ -10,7 +10,11 @@
     --shamrock: #4dd599;
     --shamrock-dark: #36bb81;
     --shadow50: rgba(0, 0, 0, 0.5);
+    --skyBlue: #64C4ED;
+    --grey: #C9D1D3;
+    --mercury: #e8e8e8;
 }
+
 //colors
 $lightgray: var(--aqua_haze);
 $border_color: var(--seashell);
@@ -21,15 +25,21 @@ $dark: var(--dark);
 $primary: var(--shamrock);
 $primary-hover: var(--shamrock-dark);
 $shadow: var(--shadow50);
+$blue: var(--skyBlue);
+$grey: var(--grey);
+$checkbox_disable: var(--mercury);
 
 
 //font
 $font_roboto: 'Roboto', sans-serif;
 $font_size_default: 14px;
+$font_montserrat: 'Montserrat', sans-serif;
 
 //sizes
 $width_sidebar: 15%;
 $min_width_sidebar: 200px;
+$font_h2: 32px;
+$line_height: 140%;
 
 //shadows
 $sidebar_item_shadow: 0px 2px 10px var(--shadow);

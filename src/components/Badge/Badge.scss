@@ -9,9 +9,9 @@
 
     @each $color, $colorHex in (
         green: #42B883, 
-        blue: #64C4ED, 
+        blue: $blue, 
         pink:#FFBBCC, 
-        grey: #C9D1D3, 
+        grey: $grey, 
         lime:#B6E6BD,
         purple: #C355F5,
         black: #110133,
