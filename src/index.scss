@@ -60,6 +60,14 @@ code {
   padding: 10px 20px;
   transition: $transition;
   cursor: pointer;
+
+  &:disabled{
+    background-color: $icon_gray;
+    cursor: auto;
+    &:hover{
+      background-color: $icon_gray;
+    }
+  }
 }
 
 .btn-primary{

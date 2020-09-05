@@ -3,10 +3,11 @@ import './List.scss'
 import classNames from 'classnames'
 import Badge from '../Badge'
 
-const List = ({ items, isRemovable,  onClick }) => {
+import removeSVG from '../../assets/img/remove.svg'
+
+const List = ({ items, isRemovable,  onClick,  onRemove }) => {
     
     return(
-        
         <ul className="list"  onClick={onClick} >
             {items.map(item =>  (
                 <li 
@@ -19,11 +20,12 @@ const List = ({ items, isRemovable,  onClick }) => {
                         : <Badge color={item.color}/>
                     }
                     <span title={item.name}>{item.name}</span>
-                    {
-                        isRemovable ? 
-                        <i>
-                        </i>
-                        : null
+                    { isRemovable && 
+                        <button 
+                            aria-label="удалить элемент" 
+                            className="list__remove" 
+                            onClick={() => onRemove(item)}
+                        ><img src={removeSVG} alt="Удалить элемент"/> </button>
                     }
                 </li>
             ))}

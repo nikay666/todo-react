@@ -1,24 +1,35 @@
 @import '../../var.scss';
 
 .list{
-    margin-bottom: 30px;
+  $self: &;
+  margin-bottom: 30px;
 
-    &__add-button{
-        color: $dark;
-        svg{
-            path{
-                stroke: $dark;
-            }
-        }
-        opacity: .4;
-        transition: transition;
+  &__remove{
+    border: none;
+    background: none;
+    margin-left: 3px;
+    cursor: pointer;
+    transition: $transition;
+    opacity: 0;
+    padding: 0 5px;
+  }
 
-        &:hover{
-            opacity: 1;
-        }
-    }
+  &__add-button{
+      color: $dark;
+      svg{
+          path{
+              stroke: $dark;
+          }
+      }
+      opacity: .4;
+      transition: transition;
 
-    li{
+      &:hover{
+          opacity: 1;
+      }
+  }
+
+  li{
     display: flex;
     align-items: center;
     padding: 10px 12px;
@@ -26,10 +37,28 @@
     cursor: pointer;
     transition: $transition;
 
+    span{
+      flex: 1;
+    }
+
+    &:hover{
+      background-color: $white;
+      border-radius: $br;    
+      
+      #{$self}__remove{
+        opacity: .3;
+        &:hover{
+          opacity: 0.8;
+        }
+      }
+    }
+    
+
     &.active{
       background-color: $white;
       box-shadow: $sidebar_item_shadow;
       border-radius: $br;
+
     }
 
     i{

@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import List from './components/List'
 import AddList from './components/AddList';
 
 import DB from './assets/db.json';
 
+export function filterColorByID(arr, id){
+  return arr.find(color  => color.id === id).name 
+}
 
 function App() {
+  const items = DB.lists.map(item => {
+    item.color = filterColorByID(DB.colors, item.colorId)
+    return item
+  })
 
-  // const [value, setValue] = useState(initialState);
-
-
+  const [lists, setLists ] = useState(items)
 
   const titleItems = [
     {
@@ -22,26 +27,7 @@ function App() {
       active: false,
     },
   ]
-  const items= [
-    {
-      id:1,
-      color: 'green',
-      name: 'Покупки',
-      active: false,
-    },
-    {
-      id: 2,
-      color: 'blue',
-      name: 'Фронтенд',
-      active: true,
-    },
-    {
-      id: 3,
-      color: 'pink',
-      name: 'Фильмы и сериалы...',
-      active: false,
-    },
-  ]
+
   const addList = [
     {
       id: 0,
@@ -73,7 +59,20 @@ function App() {
     },
   ]
 
+  const onAdd = (obj) => {
+    const newList  = [...lists,  obj]
+    setLists(newList)
+  }
+  
+  const removeItem = (obj) => {
+   if(window.confirm(`Вы действительно хотите удалить элемент ${obj.name}?`)){
+    const newList = lists.filter(el => el.id !== obj.id)
+    setLists(newList);
+   }
+    
+}
 
+  console.log(lists)
   return (
     <div className="todo">
       <div className="todo__sidebar" >
@@ -82,10 +81,11 @@ function App() {
           isRemovable={false} 
         />
         <List  
-          items={items} 
+          items={lists} 
           isRemovable={true} 
+          onRemove={removeItem}
         />
-      <AddList items={addList} colors={DB.colors} />
+      <AddList onAdd={onAdd} items={addList} colors={DB.colors} />
       </div>
       <div className="todo__tasks">
 
