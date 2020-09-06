@@ -1,15 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import List from '../List'
 import './AddList.scss'
 import Badge from '../Badge'
 import closeSVG from '../../assets/img/close.svg'
-import {filterColorByID} from '../../App'
+import {filterColorByID} from '../../components/utilits'
+import { urlLists } from '../../App'
+import axios from 'axios'
 
 const AddList = ({items, colors, onAdd}) => {
     const [visible, setVisible ] = useState(false) 
-    const [selectedColor, setSelectedColor] = useState(colors[0].id)
+    const [selectedColor, setSelectedColor] = useState(0)
     const [inputValue, setInputValue] = useState('')
     const [disables, setDisabled] = useState(true)
+    const [loading, setLoading ] = useState(false);
+
+    useEffect(() => {
+        if(Array.isArray(colors)){
+            setSelectedColor(colors[0].id)
+        }
+    }, [colors])
 
     const onClose =  () => {
         setVisible(false)
@@ -24,14 +33,21 @@ const AddList = ({items, colors, onAdd}) => {
     }
 
     const addList = () => {
-        const id = `f${(~~(Math.random()*1e8)).toString(16)}`;
-        onAdd( {
-            "id": id,
-            "name": inputValue.toString(),
-            "colorID":  selectedColor,
-            "color":  filterColorByID(colors, selectedColor)
+        setLoading(true)
+    
+        axios.post(urlLists,  {
+            name: inputValue.toString(),
+            colorId: selectedColor
         })
-        onClose()
+        .then(({data}) => { 
+            const color  = filterColorByID(colors, selectedColor)
+            const listObj  =  {...data, color: {name: color }}
+            onAdd(listObj)
+            onClose()
+        })
+        .finally(() => {
+            setLoading(false)
+        })
     }
 
     const EnterVlaue = (e) => {
@@ -79,12 +95,11 @@ const AddList = ({items, colors, onAdd}) => {
                      
                    </ul>
                </div>
-                    
                 <button 
                     className="btn btn-primary"
                     onClick={addList}
                     disabled={disables}
-                >Добавить</button>
+                > {loading ? 'Добавление...' : 'Добавить'} </button>
             </div>
             : null
             }

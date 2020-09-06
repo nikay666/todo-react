@@ -65,12 +65,12 @@
             border: 2px  solid $checkbox_disable;
             border-radius: 50%;
             cursor: pointer;
-            transition: $transition;
+            transition: $transition_01;
 
             svg{
                 width: 80%;
                 height: 80%;
-                transition: $transition;
+                transition: $transition_01;
         
             }
             
