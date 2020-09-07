@@ -39,7 +39,9 @@ $font_montserrat: 'Montserrat', sans-serif;
 $width_sidebar: 15%;
 $min_width_sidebar: 200px;
 $font_h2: 32px;
+$font_big: 22px;
 $line_height: 140%;
+$max_width_title: 900px;
 
 //shadows
 $sidebar_item_shadow: 0px 2px 10px var(--shadow);
@@ -50,3 +52,15 @@ $br_b:  10px;
 
 $transition: .2s  ease-in-out;
 $transition_01: .1s  ease-in-out;
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }

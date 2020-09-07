@@ -37,8 +37,15 @@
     cursor: pointer;
     transition: $transition;
 
-    span{
+    .text{
       flex: 1;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100px;
+    }
+    .signature{
+      color: $icon_gray;
     }
 
     &:hover{

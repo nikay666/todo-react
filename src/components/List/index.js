@@ -6,9 +6,9 @@ import Badge from '../Badge'
 import './List.scss'
 
 import removeSVG from '../../assets/img/remove.svg'
-import { urlLists } from '../../App'
+import { urlLists } from '../utilits'
 
-const List = ({ items, isRemovable,  onClick,  onRemove }) => {
+const List = ({ items, isRemovable,  onClick,  onRemove, onClickItem, activeItem }) => {
 
     const removeList = (item) =>{ 
         if(window.confirm(`Вы действительно хотите удалить элемент ${item.name}?`)){
@@ -22,14 +22,17 @@ const List = ({ items, isRemovable,  onClick,  onRemove }) => {
             {items.map(item =>  (
                 <li 
                     key={item.id}
-                    className={classNames(item.className, {'active': item.active})}
+                    className={classNames(item.className,
+                         {'active': activeItem && activeItem.id ===item.id})}
+                    onClick={onClickItem ? () => onClickItem(item) : null}
                     
                 >
                     {item.icon ?
                         <i>{item.icon}</i>
                         : <Badge color={item.color.name}/>
                     }
-                    <span title={item.name}>{item.name}</span>
+                    <span className="text" title={item.name}>{item.name}</span>
+                    <span className="signature">{item.tasks  && `(${item.tasks.length})`}</span>
                     { isRemovable && 
                         <button 
                             aria-label="удалить элемент" 

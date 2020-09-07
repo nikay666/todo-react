@@ -1,17 +1,53 @@
-import React  from 'react'
+import React, { useState, useRef, useEffect }  from 'react'
 import  './tasks.scss'
 import editSvg  from '../../assets/img/edit.svg'
 
-const Tasks = ({list}) =>{
-    console.log(list)
+const Tasks = ({list, onEditTitle}) =>{
+    const focusTitle = useRef(null);
+    const [title, setTitle] = useState(list.name)
+
+    useEffect(() => {  
+        setTitle(list.name)
+    }, [list])
+
+    const editTitle = (e) =>{ 
+        const newTitle =  e.target.value
+        setTitle(newTitle)
+    } 
+    const blurTitle = () =>{
+        focusTitle.current.blur();
+    }
+    const saveTitle = () =>  {
+        if(title === list.name) return null
+        onEditTitle(list.id,  title)
+        setTitle(list.name)
+
+    }
 
     return (
         <div className="tasks">
-          <h2 className="tasks__title">
-                {list.name}
-                <button className="tasks__edit"><img src={editSvg} alt="Редактиировать текст"/></button>
-            </h2>
+            <div className="tasks__title-wrap">
+                <h2 className="visually-hidden">{list.name}</h2>
+
+                <input type="text"
+                    className={`tasks__title-text`}
+                    ref={focusTitle}
+                    onChange={editTitle}
+                    onKeyPress={ (e) => e.key === 'Enter' && blurTitle() }
+                    onBlur={saveTitle}
+                    value={title}
+                    size={title && title.length + 2}
+                />
+   
+                <button 
+                    className="tasks__edit"
+                    onClick={() => focusTitle.current.focus()}
+                >
+                <img src={editSvg} alt="Редактиировать текст"/>
+                </button>
+            </div>
             <div className="tasks__items">
+                {!list.tasks.length && <p className="tasks__title-disabled">Здесь пока ничего нет :(</p> }
                 {
                     //TODO исправить checkbox на доступные
                     list.tasks.map(task => (

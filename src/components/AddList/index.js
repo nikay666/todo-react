@@ -4,7 +4,7 @@ import './AddList.scss'
 import Badge from '../Badge'
 import closeSVG from '../../assets/img/close.svg'
 import {filterColorByID} from '../../components/utilits'
-import { urlLists } from '../../App'
+import { urlLists } from '../utilits'
 import axios from 'axios'
 
 const AddList = ({items, colors, onAdd}) => {

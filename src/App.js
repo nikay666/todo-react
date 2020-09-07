@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { List, AddList,Tasks, Loader } from './components'
 
-// import DB from './assets/db.json';
 import axios from 'axios'
-import { addList, titleItems } from './components/utilits';
-
-export const urlListsColor = 'http://localhost:3001/lists?_expand=color'
-export const urlColors = 'http://localhost:3001/colors'
-export const urlLists = 'http://localhost:3001/lists'
-export const urlTasks=  'http://localhost:3001/lists?_expand=color&_embed=tasks'
-
+import { addList, titleItems, urlTasks, urlColors } from './components/utilits';
 
 function App() {
+  const [lists, setLists ] = useState(null)
+  const [colors, setColors] = useState(null)
+  const [activeItem, setActiveItem] = useState(null)
+
   async function fetchData(){
     axios.get(urlTasks).then(({data}) => {
       setLists(data);
@@ -20,9 +17,6 @@ function App() {
       setColors(data)
     })
   }
-
-  const [lists, setLists ] = useState(null)
-  const [colors, setColors] = useState(null)
 
   useEffect(() => {
     fetchData();
@@ -41,6 +35,22 @@ function App() {
     const newList = lists.filter(el => el.id !== id) 
     setLists(newList);
   }
+
+  const onClickItem = item =>{
+    setActiveItem(item)
+    console.log(activeItem)
+  } 
+
+  const onEditListTitle  = (id, title) => {
+    console.log(id, title)
+    const newList = lists.map(item  => {
+      if(item.id === id){
+        item.name = title
+      }
+      return item
+    }) 
+    setLists(newList);
+  }
   
   return (
     <div className="todo">
@@ -53,11 +63,18 @@ function App() {
           items={lists} 
           isRemovable={true} 
           onRemove={removeItem}
+          onClickItem={onClickItem}
+          activeItem={activeItem}
         />
       <AddList onAdd={onAdd} items={addList} colors={colors} />
       </div>
       <div className="todo__tasks">
-        <Tasks list={lists[1]} />
+        { activeItem && 
+          <Tasks 
+            list={activeItem} 
+            onEditTitle={onEditListTitle} 
+          /> 
+        }
       </div>
     </div>
   );

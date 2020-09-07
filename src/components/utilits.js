@@ -45,3 +45,8 @@ export const addList = [
       active: false
     },
 ]
+
+export const urlListsColor = 'http://localhost:3001/lists?_expand=color'
+export const urlColors = 'http://localhost:3001/colors'
+export const urlLists = 'http://localhost:3001/lists'
+export const urlTasks=  'http://localhost:3001/lists?_expand=color&_embed=tasks'
