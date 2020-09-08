@@ -30,6 +30,19 @@ function App() {
     const newList  = [...lists,  obj]
     setLists(newList)
   }
+
+  const  onAddTask = (listId, taskObj) =>{ 
+    console.log(taskObj)
+    // const newList  = [...lists,  taskObj]
+    const newList = lists.map(item =>  {
+      if(item.id === listId){
+        item.tasks = [...item.tasks, taskObj]
+      }
+      return item
+    }) 
+
+    setLists(newList)
+  }
   
   const removeItem = (id) => {
     const newList = lists.filter(el => el.id !== id) 
@@ -51,7 +64,9 @@ function App() {
     }) 
     setLists(newList);
   }
-  
+
+
+
   return (
     <div className="todo">
       <div className="todo__sidebar" >
@@ -73,6 +88,7 @@ function App() {
           <Tasks 
             list={activeItem} 
             onEditTitle={onEditListTitle} 
+            onAddTask={onAddTask}
           /> 
         }
       </div>

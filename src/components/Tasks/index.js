@@ -1,8 +1,21 @@
 import React, { useState, useRef, useEffect }  from 'react'
 import  './tasks.scss'
 import editSvg  from '../../assets/img/edit.svg'
+import axios from 'axios'
+import { urlLists } from '../utilits'
+import AddTaskForm from './AddTaskForm'
 
-const Tasks = ({list, onEditTitle}) =>{
+
+const requestUpdateTitle  = async(id, title) => {
+    axios.patch(`${urlLists}/${id}`, {
+        name: title
+    })
+    .catch(() => {
+        alert('Не удалось обноовить название списка')
+    })
+}
+
+const Tasks = ({list, onEditTitle, onAddTask}) =>{
     const focusTitle = useRef(null);
     const [title, setTitle] = useState(list.name)
 
@@ -20,8 +33,8 @@ const Tasks = ({list, onEditTitle}) =>{
     const saveTitle = () =>  {
         if(title === list.name) return null
         onEditTitle(list.id,  title)
+        requestUpdateTitle(list.id, title)
         setTitle(list.name)
-
     }
 
     return (
@@ -68,6 +81,7 @@ const Tasks = ({list, onEditTitle}) =>{
                         </div>
                     ))
                 }
+               <AddTaskForm list={list} onAddTask={onAddTask} />
             </div>
         </div>
     )

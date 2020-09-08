@@ -26,7 +26,7 @@
             display: flex;
             align-items: baseline;
             padding-bottom: 20px;
-            border-bottom: 1px  solid  $grey;
+            border-bottom: 1px  solid  $gray;
             max-width: 100%;
         }
 
@@ -74,6 +74,57 @@
                 border: none;
                 background: none;
                 width: 100%;
+            }
+        }
+    }
+
+    &__form{
+        margin-top: 20px;
+        transition: $transition;
+
+        &-block{
+            transition: $transition;
+            display: flex;
+            flex-wrap: wrap;
+
+            .btn{
+                margin-top: 15px;
+                margin-right: 10px;
+            }
+            .field{
+                
+            }
+        }
+        &-new{
+            display: flex;
+            align-items: center;
+            opacity: 0.3;
+            width: max-content;
+            transition: $transition;
+            cursor: pointer;
+
+            &:hover{
+                opacity: 1;
+            }
+
+            .btn__add{
+                border: none;
+                background: none;
+                margin-right: 15px;
+
+                svg{
+                    width: $font_size_16; 
+                    height: $font_size_16;
+                    vertical-align: middle;
+                    path{
+                        stroke: $dark;
+                    }
+                }
+
+            }
+            .text{
+                color: $dark;
+                font-size: $font_size_16;
             }
         }
     }

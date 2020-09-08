@@ -65,6 +65,7 @@ code {
   padding: 10px 20px;
   transition: $transition;
   cursor: pointer;
+  color: $white;
 
   &:disabled{
     background-color: $icon_gray;
@@ -73,13 +74,25 @@ code {
       background-color: $icon_gray;
     }
   }
-}
 
-.btn-primary{
-  background-color: $primary;
-  color: $white;
-
-  &:hover{
-    background-color: $primary-hover;
+  &-bold{
+    font-weight: bold;
   }
+
+  &-primary{
+    background-color: $primary;
+
+    &:hover{
+      background-color: $primary-hover;
+    }
+  }
+  &-gray{
+    background-color: $border_color;
+    color: $icon_gray;
+
+    &:hover{
+      background-color: $checkbox_disable;
+    }
+  }
+
 }

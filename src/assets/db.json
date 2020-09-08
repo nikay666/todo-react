@@ -84,6 +84,24 @@
       "text": "Сделали удаление и редактирование задач и списков",
       "completed": true,
       "id": 17
+    },
+    {
+      "listId": 1,
+      "text": " Конспект",
+      "completed": false,
+      "id": 18
+    },
+    {
+      "listId": 1,
+      "text": "Составить таблицы",
+      "completed": false,
+      "id": 19
+    },
+    {
+      "listId": 1,
+      "text": " Отправить отчет",
+      "completed": false,
+      "id": 20
     }
   ],
   "colors": [
