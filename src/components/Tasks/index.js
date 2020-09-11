@@ -15,7 +15,7 @@ const requestUpdateTitle  = async(id, title) => {
     })
 }
 
-const Tasks = ({list, onEditTitle, onAddTask}) =>{
+const Tasks = ({list, onEditTitle, onAddTask, withoutEmpty}) =>{
     const focusTitle = useRef(null);
     const [title, setTitle] = useState(list.name)
 
@@ -44,6 +44,7 @@ const Tasks = ({list, onEditTitle, onAddTask}) =>{
 
                 <input type="text"
                     className={`tasks__title-text`}
+                    style={{color: list.color.hex}}
                     ref={focusTitle}
                     onChange={editTitle}
                     onKeyPress={ (e) => e.key === 'Enter' && blurTitle() }
@@ -60,7 +61,7 @@ const Tasks = ({list, onEditTitle, onAddTask}) =>{
                 </button>
             </div>
             <div className="tasks__items">
-                {!list.tasks.length && <p className="tasks__title-disabled">Здесь пока ничего нет :(</p> }
+                {!withoutEmpty && !list.tasks.length && <p className="tasks__title-disabled">Здесь пока ничего нет :(</p> }
                 {
                     //TODO исправить checkbox на доступные
                     list.tasks.map(task => (

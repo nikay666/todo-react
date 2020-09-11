@@ -40,7 +40,7 @@ code {
   }
   &__tasks{
     flex:1;
-    margin: 60px;
+    overflow-y: scroll;
   }
 
 }

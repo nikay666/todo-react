@@ -102,6 +102,12 @@
       "text": " Отправить отчет",
       "completed": false,
       "id": 20
+    },
+    {
+      "listId": 6,
+      "text": " Тренировка",
+      "completed": false,
+      "id": 21
     }
   ],
   "colors": [

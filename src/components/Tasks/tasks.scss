@@ -9,8 +9,9 @@
 
 .tasks{
     $this: &;
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
+    margin: 60px;
   
     &__title-disabled{
         @include title;
@@ -35,7 +36,7 @@
             font-size: $font_h2;
             color: $blue;
             border: none;
-            max-width: $max_width_title;
+            max-width: 90%;
             transition: $transition;
             padding: 5px 15px;
 
