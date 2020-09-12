@@ -33,8 +33,8 @@ const List = ({ items, isRemovable,  onClick,  onRemove, onClickItem, activeItem
                         <i>{item.icon}</i>
                         : <Badge color={item.color.name}/>
                     }
-                    <span className="text" title={item.name}>{item.name}</span>
-                    <span className="signature">{item.tasks  && `(${item.tasks.length})`}</span>
+                    <span className="text">{item.name}</span>
+                    <span className="signature" >{item.tasks  && `(${item.tasks.length})`}</span>
                     { isRemovable && 
                         <button 
                             aria-label="удалить элемент" 

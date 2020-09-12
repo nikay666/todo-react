@@ -7,6 +7,14 @@
     line-height: $line_height;
 }
 
+.error{
+    font-size: .7rem;
+    color: #bd2222;
+    border: 1px solid #bd2222;
+    border-radius: $br;
+    padding: 4px 8px;
+    width: fit-content;
+}
 .tasks{
     $this: &;
     // width: 100%;
@@ -67,14 +75,23 @@
             display: flex;
             align-items: center;
             margin: 20px 0;
+         
             p{
                 margin-left: 15px;
             }
             .edit-text{
-                margin-left: 15px;
+                margin-left: 10px;
                 border: none;
+                border-radius: $br;
+                padding: 5px;
                 background: none;
                 width: 100%;
+                color: $dark;
+                transition: $transition, outline-color 0s;
+                &:focus{
+                    outline: auto;
+                    outline-color: $gray;
+                }
             }
         }
     }
@@ -130,11 +147,12 @@
         }
     }
     .checkbox{ 
+        display: flex;
         input{
             position: absolute;
             height: 0;
             width: 0;
-            visibility: hidden;
+            // visibility: hidden;
         }
         label{
             display: flex;
